@@ -44,7 +44,7 @@ public class MyMiniSearchEngineTest {
 
         String[] inputs = {
                 "rains hello abc",
-                "rains Hello abc",
+                "rai23ns Hello abc",
         };
 
         for (String input : inputs) {
@@ -56,13 +56,26 @@ public class MyMiniSearchEngineTest {
 
     @Test
     public void testFourWord() {
-        // homework
-        assertTrue(false); // place holder
+        MyMiniSearchEngine engine = new MyMiniSearchEngine(documents());
+
+        String[] inputs = {
+                "sunday hello world fun",
+                "su8nday hello76 6wo0rld f9un",
+        };
+
+        for (String input : inputs) {
+            List<Integer> result = engine.search(input);
+            assertEquals(1, result.size());
+            assertEquals(List.of(5), result);
+        }
     }
 
     @Test
     public void testWordNotFound() {
-        // homework
-        assertTrue(false); // place holder
+        MyMiniSearchEngine engine = new MyMiniSearchEngine(documents());
+        List<Integer> result = engine.search(" :) ");
+        assertEquals(0, result.size());
+        assertEquals(List.of(), result);
+
     }
 }
